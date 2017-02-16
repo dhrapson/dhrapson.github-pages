@@ -4,12 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I'm a UK DevOps / PaaS consultant with a deep interest in all things Cloud Foundry.
 
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+Contact me via [LinkedIn](https://www.linkedin.com/in/dhrapson)
