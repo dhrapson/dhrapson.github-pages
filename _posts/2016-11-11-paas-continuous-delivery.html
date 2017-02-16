@@ -1,0 +1,51 @@
+---
+layout: post
+title: PaaS Continuous Delivery
+date: 2016-11-11 09:02:24.000000000 +00:00
+type: post
+published: true
+status: publish
+categories: [cloud, paas, cloud foundry]
+tags: [cloud, paas, cloud foundry, continuous delivery]
+---
+<h3><a href="/2016/11/paas-continuous-delivery/"><img class="alignnone size-medium wp-image-46" src="{{ site.baseurl }}/assets/CD-300x241.png" alt="CD" width="300" height="241" /></a></h3>
+<h3>TL;DR</h3>
+<ul>
+<li>Continuously deliver your PaaS using DevOps app delivery techniques</li>
+<li>Build a cross-functional product team of engineers</li>
+<li>Continuously Improve engineering and operations using agile dev team practices</li>
+<li>Measure agility using your cycle time on CVE patches</li>
+<li>Use community-standard tools, languages and processes, for best effect</li>
+</ul>
+<h3>Is PaaS like standard infrastructure?</h3>
+<p>Most enterprises assign an operations team within their IT department for deploying &amp; managing their PaaS infrastructure. This is not a mistake; your chosen PaaS will run on top of virtualized or cloud infrastructure, use Linux container technologies and networking, the skills for which are already held by folks working in IT.</p>
+<p>This team will immediately recognise facets of previous infrastructure deployment technologies. Taking Pivotal’s Cloud Foundry (PCF) platform as an example, the signs are: an installer; a management interface that standard users cannot access; operating system access that standard users do not have; admin-level visibility across all PaaS apps; platform logging not available to app teams; platform monitoring endpoints not accessible by app teams.</p>
+<p>In the face of all this familiar operator access, the temptation is to operate the platform manually as generally happened with, for example, virtual machine (VM) estates.</p>
+
+<h3>Surprise! It’s an app!</h3>
+<p>Despite this good fit &amp; familiar look, a PaaS platform itself is actually a distributed app for running other apps on. Open platforms like Cloud Foundry provide great APIs and CLIs for managing the platform &amp; these should be used in preference to the manual operator-style GUIs wherever possible.</p>
+<p>Choosing command-line over GUI for configuration enables management via scripted automation and a DevOps approach to delivery. Your platform team should become fanatical about automation: manual operational processes eat away at engineering time &amp; left unchecked they leave no time for expanding and improving the platform. Expect to automate not only deployment of the platform itself, but also the surrounding infrastructure e.g. adding DNS entries &amp; load-balancer rules.</p>
+<p>Continuously deliver your PaaS platform, just like any other app, using all the normal DevOps techniques: Infrastructure as Code (IaC) stored in source control, Continuous Integration, configuration via automation, automatic monitoring &amp; management, etc. The process for changing your PaaS installation should always be kicked off by a code check-in.</p>
+<p>My experience with Cloud Foundry has been that platform teams must also build APIs to extend the platform, which can in turn be delivered as apps on top of the platform itself using CD.</p>
+<h3>Measure Cycle Time</h3>
+<p>Your PaaS platform will be judged by the user community on its functional and non-functional behaviour. A key non-functional requirement will likely be to address security vulnerabilities quickly, as their affect can be magnified by existing on a shared platform. App teams use the term ‘cycle time’ to describe the time it takes to put a single line code change into production, and agile teams continually attempt to make shorten cycle time to increase predictability of delivery. It is seen as a fair assessment of agile capability.</p>
+<p>CVE patches are the infrastructure equivalent to single line bug fixes – they can be your cycle time deliverable &amp; the speed at which they can be rolled through the environments indicates the agile capability of the team. An additional benefit of having short cycle time will be that the time to add new platform features will also dramatically shorten.</p>
+<h3><strong>Match Your Community</strong></h3>
+<p>Develop using the same tools &amp; techniques as the rest of the community. The main benefit is the sharing of open-source code.</p>
+<p>For Cloud Foundry use a combination of Go Lang, Ruby, Bash &amp; Concourse CI, developing on Macs. Your platform team engineers’ life will be harder &amp; they will be less effective if your Enterprise dictates they work on Windows, writing in other languages.</p>
+<p>For development practices the Cloud Foundry community has adopted a combination of Lean, Kanban &amp; XP development practices that originated in Pivotal Labs, as a de facto standard. The combination of Test Driven Design (TDD) &amp; pairing are deadly for knowledge silos within the team – engineering decisions are embodied into code as custom automation that is tested, documented (via the tests themselves) and shared every step of the way. The team develops a common sense of 'how we do things' that transcends any one individual team member. This is really important for cross-functional teams where initially just one or two team members hold all the know-how for each technology.</p>
+<p>Agile teams run a retro at the end of each week, an open and frank discussion about the team &amp; its work, which enables Continuous Improvement of team processes. Successful PaaS teams are copying this same style and continuously improving their activities in the same way.</p>
+<h3><strong>Control Change</strong></h3>
+<p>Enterprises IT loves Change Control and has long believed that adding manual rigour to the change process improves likelihood of deployment success. This sits as odds with the concept of a continuously delivered shared platform that is continually evolving.</p>
+<p>Work with your change control team to define policy before platform go-live: define the types of change that will/won't have change requests; minimise the types of the change requiring approval e.g. only those potentially causing catastrophic outage; include the ability to refine the list as the platform beds in.</p>
+<p>Where no ITIL ‘change control’ exists this does not mean change is uncontrolled. Notify the community of changes as they run through the platform CD so that they are aware. Getting the communications mechanism right for your enterprise is crucial: slack channels, automatically updating Distribution Lists, whatever suits your platform customers.</p>
+<h3>PaaS Product Team</h3>
+<p>Treat PaaS as a product, rather than a project. This means assigning a permanent Product Manager, backed by a team of versatile engineers developing your platform &amp; automation.</p>
+<p>Select engineers from a variety of backgrounds: business app developers, infrastructure developers, IT operations, network engineers, Linux sys admins, hypervisor/IaaS experts, and storage engineers are all useful folks to have on the team.</p>
+<p>New hires bring the benefit of questioning why things are done a certain way &amp; PaaS-experienced team members bring the community culture &amp; practices, so be sure to include at least one of each.</p>
+<p>The key element is to ensure the whole team is open to new ideas, practices &amp; everyone develops code. Team members won't fit in when they try to apply too many of the lessons learned pre-PaaS, or prefer manual operations to engineering automation.</p>
+<h3>PaaS Operations</h3>
+<p>Ideally the pure operations work, by which I mean supporting platform customers &amp; responding to alerts, becomes a role that moves between team members. If your Enterprise mandates that Operations is a separate team, rotate team members between Engineering and Operations, adjusting their access accordingly. All platform team members must see the effect of platform automation from both a development and operational view.</p>
+<p>The best operations teams exhibit continual improvement so create processes for analysing the root cause of failures &amp; use platform engineering rather than process rigour to prevent reoccurrence. For out-of-hours support: formalise the pager handover process to include a review of incidents &amp; steps that have been taken to prevent reoccurrence. This allows operational processes to continuously improve in the same way operational processes do.</p>
+<h3>Summary</h3>
+<p>The best way to deploy your PaaS is via Continuous Delivery, engineered and operated via a team using Continuous Improvement of team processes.</p>
