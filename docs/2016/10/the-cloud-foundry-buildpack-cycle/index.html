@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Cloud Foundry Buildpack Cycle – DHR @ cloud – DevOps / PaaS Consultant in London, UK</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="
+TL;DR
+
+Deploy / Remove buildpacks using CI and IaC. Aim for complete automation
+Continually update the ‘standard’ buildpacks that come with your CF installation &amp; roll the apps that run on them
+For custom buildpacks: setup 2 automated cycles for Create and Warn/Remove
+Define a buildpacks service statement that makes the buildpack cycle clear
+Avoid app-specific buildpacks wherever possible
+
+&nbsp;
+CF Buildpacks vs. traditional infrastructure
+With traditional infrastructure, where server installations are centrally managed, IT Security folks have often put pressure on IT departments to roll out server fixes e.g. new WebSphere fixpacks. This is tricky because IT departments do not have the resources to re-test all the apps against the upgraded binaries.
+
+" />
+    <meta property="og:description" content="
+TL;DR
+
+Deploy / Remove buildpacks using CI and IaC. Aim for complete automation
+Continually update the ‘standard’ buildpacks that come with your CF installation &amp; roll the apps that run on them
+For custom buildpacks: setup 2 automated cycles for Create and Warn/Remove
+Define a buildpacks service statement that makes the buildpack cycle clear
+Avoid app-specific buildpacks wherever possible
+
+&nbsp;
+CF Buildpacks vs. traditional infrastructure
+With traditional infrastructure, where server installations are centrally managed, IT Security folks have often put pressure on IT departments to roll out server fixes e.g. new WebSphere fixpacks. This is tricky because IT departments do not have the resources to re-test all the apps against the upgraded binaries.
+
+" />
+    
+    <meta name="author" content="DHR @ cloud" />
+
+    
+    <meta property="og:title" content="The Cloud Foundry Buildpack Cycle" />
+    <meta property="twitter:title" content="The Cloud Foundry Buildpack Cycle" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="DHR @ cloud - DevOps / PaaS Consultant in London, UK" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://raw.githubusercontent.com/dhrapson/jekyll-now/master/images/dhr.jpg" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">DHR @ cloud</a></h1>
+            <p class="site-description">DevOps / PaaS Consultant in London, UK</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>The Cloud Foundry Buildpack Cycle</h1>
+
+  <div class="entry">
+    <h1><a href="/2016/10/the-cloud-foundry-buildpack-cycle/"><img class="alignnone size-medium wp-image-34" src="/assets/cycle-300x218.jpg" alt="cycle" width="300" height="218" /></a></h1>
+<p><strong>TL;DR</strong></p>
+<ol>
+<li>Deploy / Remove buildpacks using CI and IaC. Aim for complete automation</li>
+<li>Continually update the ‘standard’ buildpacks that come with your CF installation &amp; roll the apps that run on them</li>
+<li>For custom buildpacks: setup 2 automated cycles for Create and Warn/Remove</li>
+<li>Define a buildpacks service statement that makes the buildpack cycle clear</li>
+<li>Avoid app-specific buildpacks wherever possible</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong>CF Buildpacks vs. traditional infrastructure</strong></p>
+<p>With traditional infrastructure, where server installations are centrally managed, IT Security folks have often put pressure on IT departments to roll out server fixes e.g. new WebSphere fixpacks. This is tricky because IT departments do not have the resources to re-test all the apps against the upgraded binaries.</p>
+
+<p>With Cloud Foundry Buildpacks the scenario becomes simplified:</p>
+<ul>
+<li>Buildpacks are managed by the CF platform teams, each of which lays down specific language runtime binary versions (e.g. Java, Tomcat)</li>
+<li>Application teams can choose from the available buildpacks in CF</li>
+<li>An extension to the platform reports which applications use which buildpack</li>
+<li>IT Security can chase the application teams direct</li>
+</ul>
+<p><strong>Standard buildpacks</strong></p>
+<p>Some Cloud Foundry implementations such as Pivotal Cloud Foundry (PCF) come with a whole bunch installed covering all the major language runtimes (Java, PHP, Python, Go, Ruby, Node, etc).</p>
+<p>You could choose to remove the unused ones to reduce potential security attack vectors, however you will probably have to keep at least Java, Ruby, and Go as these are typically required by CF platform management apps.</p>
+<p>A better approach is to leave them in place, keep them updated and report on usage.</p>
+<p>A diligent platform operator will want to keep the remaining standard buildpacks up to date, as each buildpack constitutes a potential attack vector. A reusable process for doing this is:</p>
+<ol>
+<li>Detect upstream buildpack releases from your CF provider</li>
+</ol>
+<p>Your CI server can do this for you. If you’re using PCF check network.pivotal.io (pivnet), which is real easy if your CI server is Concourse &amp; you can access the <a href="https://github.com/pivotal-cf/pivnet-resource">pivnet-resource</a>.</p>
+<ol start="2">
+<li>Download and update buildpacks</li>
+</ol>
+<p>Download the pre-built buildpacks and publish locally to your network. Binary repositories such as Artifactory or Nexus are ideal for this</p>
+<ol start="3">
+<li>Test the buildpack</li>
+</ol>
+<p>Create a new buildpack in a CF environment without any business apps in it (e.g. a lab environment) &amp; push a sample app against it, to prove the pre-built zip file works.</p>
+<ol start="4">
+<li>Update buildpacks</li>
+</ol>
+<p>Update the buildpack in your CF installations without changing the buildpack names, via CI.</p>
+<p>5. Repush all the apps that depend on this buildpack</p>
+<p>After repushing, run a suite of smoke tests to prove that the platform still functions as you would expect. This will ensure that your core platform features are securely deployed. Any business apps that deployed on it should also be included in this 'rolling' of apps onto the upgraded buildpack, as should any native CF Services that are implemented as application instances.</p>
+<p><strong>Buildpack Deployment</strong></p>
+<p>Deployment of buildpacks requires Administrator-type access in CF.</p>
+<p>The best way to manage it is using a CI job that compares the buildpacks installed against a master list stored in a file or collection of files: adding those that are missing, removing those that are not listed &amp; notifying the community of the changes. This kind of job is idempotent, based on Infrastructure-as-Code (IaC) so it can be re-run on a regular schedule to continuously assure your CF environment buildpacks are up to date. The files should be kept under version management.</p>
+<p>As individual buildpack CI jobs complete, they should update their entry in this buildpack definition file. Each entry should state the buildpack name and zip file location.</p>
+<p>I advocate updating the file(s) with statuses and deletion dates as older buildpack versions are superseded by new ones, rather than removing them altogether. That way you have a history of what buildpacks were intended for addition and deletion from your CF environments.</p>
+<p>By updating the buildpack IaC definition separately from deploying it into environments, you decouple the testing of new buildpacks from their general purpose rollout, which can be handy if CF environments are under change control.</p>
+<p>&nbsp;</p>
+<p><strong>Custom Buildpack Creation</strong></p>
+<p>You are going to be adding custom buildpacks to your CF installation, for the reasons of: adding enterprise SSL CA certificates, adding custom features, disabling unwanted functionality, custom language binary version requirements, etc. Remember to use TDD for each of the new features you add e.g. adding rspec tests for the Java Buildpack.</p>
+<p>Since these are the ones likely to be used by your enterprise applications, I recommend introducing a deployment / deletion cycle for these whereby new buildpack releases are deployed with a new name, and old ones deleted by name.</p>
+<p>The key driver behind this cycle will be to upgrade the binary versions that buildpacks install e.g. fixing security vulnerabilities. This is typically driven by a IT Security team who want to push on application security.</p>
+<p>Code merging will most likely be manual, so the deployment cycle should take two parts.</p>
+<p>CI Part 1:</p>
+<ol>
+<li>Detect upstream buildpack releases from Github</li>
+</ol>
+<p>This is a CI process that checks the relevant github.com repository</p>
+<ol start="2">
+<li>Merge code down into yours &amp; build</li>
+</ol>
+<p>You will have forked the public Github repository before adding your changes to it. Use standard Git techniques to merge the public changes to your own Git repository.</p>
+<p>If the merge fails on conflicts, fail this build.</p>
+<p>Any red on the CI board caused by a failed merge will notify the CF team that there is action required. After manually code merging &amp; committing back to your custom git repository, CI Part 2 will kick off:</p>
+<ol>
+<li>Detect code changes in your buildpack source code</li>
+</ol>
+<ol start="2">
+<li>Build the buildpack</li>
+</ol>
+<p>Build processes are specific to each. Remember to run the buildpack unit tests. Each buildpack has a way of declaring their version internally. Ensure your build updates the internal version definition (e.g. config/version.yml for Java)</p>
+<ol start="3">
+<li>Test the buildpack</li>
+</ol>
+<p>Create a new buildpack in CF at the lowest priority &amp; push a sample app against it to test the custom features you have added (e.g. SSL certs) work. Remove the app and buildpack at the end of this.</p>
+<ol start="4">
+<li>Install buildpacks</li>
+</ol>
+<p>Create a new entry in your buildpacks definition file. The separate Deployment CI process will kick off and deploy the buildpack.</p>
+<p>&nbsp;</p>
+<p><strong>Custom Buildpack Warning / Deletion</strong></p>
+<p>The process for warning / deletion on buildpacks will depend on your prior agreement with app teams. Removing buildpacks on which running apps have been built will cause issues if they restage the app &amp; the buildpack is missing. However, waiting for all app teams to be off old buildpack versions before deleting them can cause a long tail of old buildpacks used by one or two stubborn app teams too busy to upgrade their apps.</p>
+<p>I recommend a halfway house: warn users of deletion in advance; delete automatically, taking care to warn specific users who didn’t move off the old buildpack at time of deletion.</p>
+<p>Create one CI job to give app teams advanced warning. The job should check the buildpack definition file for new buildpack versions, updating the entries for older buildpacks with an intended deletion date.</p>
+<p>Create a second CI job to delete buildpacks automatically from CF after that date, remembering first to query CF for a list of apps that are on the old buildpack &amp; the list of CF users that own the Orgs and Spaces in which these apps run. These lists can be used to notify users of their dependency on a deleted buildpack.</p>
+<p>I like this approach because the buildpack removal dates could be adjusted manually in the event of an exception to the normal process.</p>
+<p>&nbsp;</p>
+<p><strong>App-specific Buildpacks</strong></p>
+<p>In this scenario application teams take responsibility for a copy of buildpack code. Responsibility for keeping up to date with language runtime binary (e.g. JRE) versions transitions to the app team. I have seen them used for cases as trivial as providing secret key material that was forbidden to be stored with ‘application code’.</p>
+<p>From experience these are a very bad idea for everything except temporary fixes. Application teams rarely keep the underlying binary versions up to date, so should be used as a last resort only.</p>
+<p>Where app teams require custom features above normal buildpack functionality, these should be added into the core (ideally public Github) buildpack code by the CF platform team in a generic way e.g. by adding support for downloading secret keys from a HSM.</p>
+<p>&nbsp;</p>
+<p><strong>Buildpack Service Contract</strong></p>
+<p>Create and publish a Buildpack Service Contract so that app teams understand the requirement to continuously upgrade buildpacks. An example contract might go something like:</p>
+<p><em>Standard buildpacks</em></p>
+<ul>
+<li>Standard buildpacks will be upgraded in place without notice</li>
+<li>All apps that depend on them will be rolled onto the new buildpack version</li>
+<li>In the case that a Deploy and Smoke Test CI job is provided, applications will be smoke tested before in a LAB environment before being upgraded</li>
+</ul>
+<p><em>Custom buildpacks</em></p>
+<ul>
+<li>Old buildpacks will be removed 2 weeks after provision of a later version of the same buildpack</li>
+<li>In the case of a Zero Day or High Severity security vulnerability, removal will be within 1 week</li>
+<li>All PCF Space-level users will be notified via email immediately a new buildpack is available</li>
+<li>At time of removal, the PCF Space-level users of any apps still running on the buildpack will be notified via email</li>
+<li>A versioned definition buildpacks and deployment dates will be made available</li>
+</ul>
+<p><em>Application buildpacks</em></p>
+<ul>
+<li>The app team owns the buildpack code and is responsible for the binary versions it installs and fixing the security defects that arise</li>
+</ul>
+<p>&nbsp;</p>
+<p>Hopefully this explains the cycle of buildpacks through CF.</p>
+<p>The only real hands-on part is the merging of upstream code, if any.</p>
+
+  </div>
+
+  <div class="date">
+    Written on October  5, 2016
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/dhrapson"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/dhrapson"><i class="svg-icon linkedin"></i></a>
+
+
+<a href="https://www.twitter.com/dhrapson"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
