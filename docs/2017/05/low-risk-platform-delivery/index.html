@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Platform delivery - part II - low risk – DHR @ cloud – DevOps / PaaS Consultant in London, UK</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="
+There are many ways to fail when delivering shared IT platforms, and in part 1 I described a typical high-risk delivery strategy often chosen by default. In this post I propose a better, low-risk way.
+TL;DR
+
+  work with a small number of app teams with clear requirements, to define a mission statement
+  work with technology providers to define service level / cost options
+  follow Lean Startup techniques for service level selection &amp; PoC
+  validate mission is met &amp; measure service levels
+  keep job
+
+
+" />
+    <meta property="og:description" content="
+There are many ways to fail when delivering shared IT platforms, and in part 1 I described a typical high-risk delivery strategy often chosen by default. In this post I propose a better, low-risk way.
+TL;DR
+
+  work with a small number of app teams with clear requirements, to define a mission statement
+  work with technology providers to define service level / cost options
+  follow Lean Startup techniques for service level selection &amp; PoC
+  validate mission is met &amp; measure service levels
+  keep job
+
+
+" />
+    
+    <meta name="author" content="DHR @ cloud" />
+
+    
+    <meta property="og:title" content="Platform delivery - part II - low risk" />
+    <meta property="twitter:title" content="Platform delivery - part II - low risk" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="DHR @ cloud - DevOps / PaaS Consultant in London, UK" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Platform delivery - part II - low risk - DHR @ cloud</title>
+<meta property="og:title" content="Platform delivery - part II - low risk" />
+<meta name="description" content="There are many ways to fail when delivering shared IT platforms, and in part 1 I described a typical high-risk delivery strategy often chosen by default. In this post I propose a better, low-risk way. TL;DR work with a small number of app teams with clear requirements, to define a mission statement work with technology providers to define service level / cost options follow Lean Startup techniques for service level selection &amp; PoC validate mission is met &amp; measure service levels keep job" />
+<meta property="og:description" content="There are many ways to fail when delivering shared IT platforms, and in part 1 I described a typical high-risk delivery strategy often chosen by default. In this post I propose a better, low-risk way. TL;DR work with a small number of app teams with clear requirements, to define a mission statement work with technology providers to define service level / cost options follow Lean Startup techniques for service level selection &amp; PoC validate mission is met &amp; measure service levels keep job" />
+<link rel="canonical" href="http://localhost:4000/2017/05/low-risk-platform-delivery/" />
+<meta property="og:url" content="http://localhost:4000/2017/05/low-risk-platform-delivery/" />
+<meta property="og:site_name" content="DHR @ cloud" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-05-03T06:30:21+01:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Platform delivery - part II - low risk",
+"datePublished": "2017-05-03T06:30:21+01:00",
+"description": "There are many ways to fail when delivering shared IT platforms, and in part 1 I described a typical high-risk delivery strategy often chosen by default. In this post I propose a better, low-risk way. TL;DR work with a small number of app teams with clear requirements, to define a mission statement work with technology providers to define service level / cost options follow Lean Startup techniques for service level selection &amp; PoC validate mission is met &amp; measure service levels keep job",
+"url": "http://localhost:4000/2017/05/low-risk-platform-delivery/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://raw.githubusercontent.com/dhrapson/jekyll-now/master/images/dhr.jpg" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">DHR @ cloud</a></h1>
+            <p class="site-description">DevOps / PaaS Consultant in London, UK</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Platform delivery - part II - low risk</h1>
+
+  <div class="entry">
+    <p><img src="/assets/high-low-risk.jpg" alt="Low Risk level" class="img-responsive" /><br /><br />
+There are many ways to fail when delivering shared IT platforms, and in <a href="/2017/05/high-risk-platform-delivery/">part 1</a> I described a typical high-risk delivery strategy often chosen by default. In this post I propose a better, low-risk way.<br /></p>
+<h3 id="tldr">TL;DR</h3>
+<ul>
+  <li>work with a small number of app teams with clear requirements, to define a <a href="/2016/11/paas-mission-control/">mission statement</a></li>
+  <li>work with technology providers to define service level / cost options</li>
+  <li>follow Lean Startup techniques for service level selection &amp; PoC</li>
+  <li>validate mission is met &amp; measure service levels</li>
+  <li>keep job</li>
+</ul>
+
+<h3 id="approach">Approach</h3>
+
+<p>IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, function-as-a-service, etc.</p>
+
+<p>The process starts with some pushing for the introduction of a new technology from technical resources within IT and application teams. It is clear the industry is moving in a certain direction &amp; online material suggests the technology will definitely improve app time-to-market.</p>
+
+<p>A small platform delivery team is formed to define a strategy.</p>
+
+<h3 id="app-teams">App teams</h3>
+
+<p>The platform delivery team should work with a small number (max. 3) app teams, ideally with slightly differing requirements, to define a clear business benefit. A definition of the business benefit that suits this small sample should be formed as a <a href="/2016/11/paas-mission-control/">mission statement</a>.</p>
+
+<p>Using Platform-as-a-Service (PaaS) as an example, a number of the examples below might apply:</p>
+
+<ul>
+  <li>take an app from idea to production within 1 day</li>
+  <li>provide existing developers a low barrier-to-entry developer prod-like deployment environment</li>
+  <li>give developers an environment to try out deployment of apps on new languages / frameworks</li>
+  <li>isolate app teams from deployment environment details</li>
+  <li>provide an environment on which high-change apps can continuously deliver</li>
+  <li>reduce operating system licensing costs</li>
+</ul>
+
+<h3 id="risks">Risks</h3>
+
+<p>The risks are the same as I highlighted in <a href="/2017/05/high-risk-platform-delivery/">part 1 of this blog post</a>, copied below for reference.</p>
+
+<p>There will be a variety of permutations for delivering the platform, not least: technology provider; technology capabilities/options; hardware/software dependencies; redundancy / failover; load-balancing; statefulness; HA deployment pattern; clustering / distribution support; and especially cost.</p>
+
+<p>The biggest risk is providing a platform that does not suit user requirements. This is mostly likely to happen due to:</p>
+
+<ul>
+  <li>missing functional requirements e.g. support for specific technologies on the platform</li>
+  <li>missing non-functional requirements e.g. data retention period, request latency maximums</li>
+  <li>platform design choices e.g. specific technology dependency on Docker, platform feature turned off</li>
+  <li>mis-judging service level e.g. meeting the functional/availability/performance/cost requirements of a small number of very demanding users whilst missing a lower-level service that would suit everyone else</li>
+  <li>introducing unsuitable process e.g. placing a ticket-based on-boarding with a 5 day SLA for a platform aimed at having a low barrier-to-entry</li>
+</ul>
+
+<h3 id="provider-service-definitions">Provider Service Definitions</h3>
+
+<p>There is usually an early debate between the top 2 technology provider options (e.g. Kubernetes vs. Mesos, Cloud Foundry vs. OpenShift). Rather than relying on ‘religious’ fervour of its team members, or general provider popularity, the platform delivery team should work with the contenders to define target Service Levels for the platform, given the recommended platform architecture. Use the <a href="https://landing.google.com/sre/book/chapters/service-level-objectives.html">Google SRE Service Level</a> concepts to support your Service Definition:</p>
+<ul>
+  <li>Service Level Indicator (SLI) - a carefully defined quantitative measure of some aspect of the level of service that is provided</li>
+  <li>Service Level Objective (SLO) - a target value or range of values for a service level that is measured by an SLI</li>
+</ul>
+
+<p>Come up with 2 Service Level options per provider. Be sure to use the same Service Level Indicators &amp;  method of measurement across providers. All of the options should be cost-neutral to IT in that the various license, subscription, hardware, shared service (e.g. storage, network) &amp; human resources costs should be bundled in for each option, for recharge to consumers of the platform. This opens the door for customer preference alone to drive the decision.</p>
+
+<h3 id="example-sli--slo-options">Example SLI / SLO Options</h3>
+
+<table class="mbtablestyle">
+  <thead>
+    <tr>
+      <th>Service Level Indicator</th>
+      <th>Service Level Objective (option 1)</th>
+      <th>Service Level Objective (option 2)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Uptime measured via 1 request per second from an off-platform client</td>
+      <td>99.9%</td>
+      <td>99.99%</td>
+    </tr>
+    <tr>
+      <td>Planned Outage requirement &amp; frequency</td>
+      <td>2h/week</td>
+      <td>1h/year</td>
+    </tr>
+    <tr>
+      <td>Platform API Uptime measured via a user login request every 5s</td>
+      <td>99%</td>
+      <td>99.5%</td>
+    </tr>
+    <tr>
+      <td>Request Latency - e.g. 99th percentile platform response time of HTTP requests</td>
+      <td>&lt;1s</td>
+      <td>&lt;0.5s</td>
+    </tr>
+    <tr>
+      <td>Error / Loss rate e.g. log loss</td>
+      <td>5%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <td>Cost</td>
+      <td>$0.05/hour</td>
+      <td>$0.50</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="service-definitions">Service Definitions</h3>
+
+<p>Create a Service Definition for each Service Level option. This Service Definition should define at a high level how users will interact with the platform and operational team, which will differ between options.</p>
+
+<p>Within each definition, state that you intend to use the <a href="https://landing.google.com/sre/book/chapters/introduction.html">Google SRE</a> concept of an Error Budget. At a high level this concept acknowledges that platform stability is generally inversely proportional to the level of platform change &amp; allows the platform owner the ability to continue updating the platform, perhaps causing minor outages, and hence ‘spending’ the Error Budget up until the point SLOs are not being met. At that point the only changes allowed are to make the platform more stable. A fairly short service metric timeframe should be set to avoid complete lock-up of platform fixes (e.g. 1 week).</p>
+
+<h2 id="service-selection">Service Selection</h2>
+
+<p>At this point the wider app team community can be presented with the Service Definitions and requested to provide feedback or vote on the various options. A ‘None of these suits me’ option should also be provided to differentiate teams uninterested in contributing, from those uninterested in the options.</p>
+
+<p>Expect some spread here, for example: high-importance, high-change apps may be happy to pay a high price for highly available, flexible platform; whilst low-importance, low-change apps may not. Select option(s) that provide the highest business value.</p>
+
+<p>This information-gathering process is based on the <a href="http://theleanstartup.com/principles">Lean Startup validated learning concept</a> &amp; frees up IT management from making career-altering service delivery choices, risky technology provider decisions or being forced to use <em>gut feel</em>.</p>
+
+<h2 id="platform-validation">Platform Validation</h2>
+
+<p>Having chosen a service definition &amp; underlying provider, the platform delivery team can go ahead and deploy the smallest PoC copy of the platform software. The next step should be to validate that the <a href="/2016/11/paas-mission-control/">mission statement</a> is met by the platform <em>within the deployed environment</em> using scripted automation. Pre-existing infrastructure and/or security standards are the factors most likely to affect this result.</p>
+
+<p>In the instance that the platform validation fails, it should be possible to push back on the platform provider for changes, or switch to a PoC of the second favourite option amongst app teams. PoCs are not a new concept, however running them to validate the service definition rather than obtain user feedback does provide specific <a href="http://theleanstartup.com/principles">validated learning</a> about the platform.</p>
+
+<p>With mission validated, a small set of platform consumers could use the PoC environment in order to provide validated learning around platform clients &amp; tooling, if required, or the infrastructure scaled to validate distributed deployment.</p>
+
+<h2 id="indicator-monitoring">Indicator Monitoring</h2>
+
+<p>Once the PoC environment has passed validation, a full copy of the platform infrastructure can be deployed. SLI monitoring must be introduced &amp; dashboards should be introduced that display RAG status against SLIs, to make it clear to customers when the Error Budget has been spent. This can be developed in parallel with the platform infrastructure delivery and even initial application on-boarding, provided that the first customers accept this lack of metering.</p>
+
+<h2 id="success">Success?</h2>
+
+<p>Since we now have SLIs, we can judge the operational success of the platform on its history of meeting the service SLOs. The underlying platform technology provider can be assessed by the same metrics in conjunction feedback from the platform delivery/support team; alternative technology providers might be considered if the provider tools caused SLOs to be missed or had a high operational overhead.</p>
+
+<p>Platform take-up is an indicator of technology popularity, useability, or suitability to the company, rather than on technology decision-making.</p>
+
+<p>The platform service decision, made in support of providing high perceived business value, and the technology decision, made gradually &amp; with user support, should no longer adversely affect IT career progression having been made in a lean, low-risk way.</p>
+
+  </div>
+
+  <div class="date">
+    Written on May  3, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/dhrapson"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/dhrapson"><i class="svg-icon linkedin"></i></a>
+
+
+<a href="https://www.twitter.com/dhrapson"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

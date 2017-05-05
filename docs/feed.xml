@@ -1,4 +1,268 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-25T16:20:46+00:00</updated><id>http://localhost:4000/</id><title type="html">DHR @ cloud</title><subtitle>DevOps / PaaS Consultant in London, UK</subtitle><entry><title type="html">PaaS Continuous Delivery</title><link href="http://localhost:4000/2016/11/paas-continuous-delivery/" rel="alternate" type="text/html" title="PaaS Continuous Delivery" /><published>2016-11-11T09:02:24+00:00</published><updated>2016-11-11T09:02:24+00:00</updated><id>http://localhost:4000/2016/11/paas-continuous-delivery</id><content type="html" xml:base="http://localhost:4000/2016/11/paas-continuous-delivery/">&lt;h3&gt;&lt;a href=&quot;/2016/11/paas-continuous-delivery/&quot;&gt;&lt;img class=&quot;alignnone size-medium wp-image-46&quot; src=&quot;/assets/CD-300x241.png&quot; alt=&quot;CD&quot; width=&quot;300&quot; height=&quot;241&quot; /&gt;&lt;/a&gt;&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-05T08:29:31+01:00</updated><id>http://localhost:4000/</id><title type="html">DHR @ cloud</title><subtitle>DevOps / PaaS Consultant in London, UK</subtitle><entry><title type="html">Platform delivery - part II - low risk</title><link href="http://localhost:4000/2017/05/low-risk-platform-delivery/" rel="alternate" type="text/html" title="Platform delivery - part II - low risk" /><published>2017-05-03T06:30:21+01:00</published><updated>2017-05-03T06:30:21+01:00</updated><id>http://localhost:4000/2017/05/low-risk-platform-delivery</id><content type="html" xml:base="http://localhost:4000/2017/05/low-risk-platform-delivery/">&lt;p&gt;&lt;img src=&quot;/assets/high-low-risk.jpg&quot; alt=&quot;Low Risk level&quot; class=&quot;img-responsive&quot; /&gt;&lt;br /&gt;&lt;br /&gt;
+There are many ways to fail when delivering shared IT platforms, and in &lt;a href=&quot;/2017/05/high-risk-platform-delivery/&quot;&gt;part 1&lt;/a&gt; I described a typical high-risk delivery strategy often chosen by default. In this post I propose a better, low-risk way.&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;tldr&quot;&gt;TL;DR&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;work with a small number of app teams with clear requirements, to define a &lt;a href=&quot;/2016/11/paas-mission-control/&quot;&gt;mission statement&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;work with technology providers to define service level / cost options&lt;/li&gt;
+  &lt;li&gt;follow Lean Startup techniques for service level selection &amp;amp; PoC&lt;/li&gt;
+  &lt;li&gt;validate mission is met &amp;amp; measure service levels&lt;/li&gt;
+  &lt;li&gt;keep job&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;approach&quot;&gt;Approach&lt;/h3&gt;
+
+&lt;p&gt;IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, function-as-a-service, etc.&lt;/p&gt;
+
+&lt;p&gt;The process starts with some pushing for the introduction of a new technology from technical resources within IT and application teams. It is clear the industry is moving in a certain direction &amp;amp; online material suggests the technology will definitely improve app time-to-market.&lt;/p&gt;
+
+&lt;p&gt;A small platform delivery team is formed to define a strategy.&lt;/p&gt;
+
+&lt;h3 id=&quot;app-teams&quot;&gt;App teams&lt;/h3&gt;
+
+&lt;p&gt;The platform delivery team should work with a small number (max. 3) app teams, ideally with slightly differing requirements, to define a clear business benefit. A definition of the business benefit that suits this small sample should be formed as a &lt;a href=&quot;/2016/11/paas-mission-control/&quot;&gt;mission statement&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using Platform-as-a-Service (PaaS) as an example, a number of the examples below might apply:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;take an app from idea to production within 1 day&lt;/li&gt;
+  &lt;li&gt;provide existing developers a low barrier-to-entry developer prod-like deployment environment&lt;/li&gt;
+  &lt;li&gt;give developers an environment to try out deployment of apps on new languages / frameworks&lt;/li&gt;
+  &lt;li&gt;isolate app teams from deployment environment details&lt;/li&gt;
+  &lt;li&gt;provide an environment on which high-change apps can continuously deliver&lt;/li&gt;
+  &lt;li&gt;reduce operating system licensing costs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;risks&quot;&gt;Risks&lt;/h3&gt;
+
+&lt;p&gt;The risks are the same as I highlighted in &lt;a href=&quot;/2017/05/high-risk-platform-delivery/&quot;&gt;part 1 of this blog post&lt;/a&gt;, copied below for reference.&lt;/p&gt;
+
+&lt;p&gt;There will be a variety of permutations for delivering the platform, not least: technology provider; technology capabilities/options; hardware/software dependencies; redundancy / failover; load-balancing; statefulness; HA deployment pattern; clustering / distribution support; and especially cost.&lt;/p&gt;
+
+&lt;p&gt;The biggest risk is providing a platform that does not suit user requirements. This is mostly likely to happen due to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;missing functional requirements e.g. support for specific technologies on the platform&lt;/li&gt;
+  &lt;li&gt;missing non-functional requirements e.g. data retention period, request latency maximums&lt;/li&gt;
+  &lt;li&gt;platform design choices e.g. specific technology dependency on Docker, platform feature turned off&lt;/li&gt;
+  &lt;li&gt;mis-judging service level e.g. meeting the functional/availability/performance/cost requirements of a small number of very demanding users whilst missing a lower-level service that would suit everyone else&lt;/li&gt;
+  &lt;li&gt;introducing unsuitable process e.g. placing a ticket-based on-boarding with a 5 day SLA for a platform aimed at having a low barrier-to-entry&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;provider-service-definitions&quot;&gt;Provider Service Definitions&lt;/h3&gt;
+
+&lt;p&gt;There is usually an early debate between the top 2 technology provider options (e.g. Kubernetes vs. Mesos, Cloud Foundry vs. OpenShift). Rather than relying on ‘religious’ fervour of its team members, or general provider popularity, the platform delivery team should work with the contenders to define target Service Levels for the platform, given the recommended platform architecture. Use the &lt;a href=&quot;https://landing.google.com/sre/book/chapters/service-level-objectives.html&quot;&gt;Google SRE Service Level&lt;/a&gt; concepts to support your Service Definition:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Service Level Indicator (SLI) - a carefully defined quantitative measure of some aspect of the level of service that is provided&lt;/li&gt;
+  &lt;li&gt;Service Level Objective (SLO) - a target value or range of values for a service level that is measured by an SLI&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Come up with 2 Service Level options per provider. Be sure to use the same Service Level Indicators &amp;amp;  method of measurement across providers. All of the options should be cost-neutral to IT in that the various license, subscription, hardware, shared service (e.g. storage, network) &amp;amp; human resources costs should be bundled in for each option, for recharge to consumers of the platform. This opens the door for customer preference alone to drive the decision.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-sli--slo-options&quot;&gt;Example SLI / SLO Options&lt;/h3&gt;
+
+&lt;table class=&quot;mbtablestyle&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Service Level Indicator&lt;/th&gt;
+      &lt;th&gt;Service Level Objective (option 1)&lt;/th&gt;
+      &lt;th&gt;Service Level Objective (option 2)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Uptime measured via 1 request per second from an off-platform client&lt;/td&gt;
+      &lt;td&gt;99.9%&lt;/td&gt;
+      &lt;td&gt;99.99%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Planned Outage requirement &amp;amp; frequency&lt;/td&gt;
+      &lt;td&gt;2h/week&lt;/td&gt;
+      &lt;td&gt;1h/year&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Platform API Uptime measured via a user login request every 5s&lt;/td&gt;
+      &lt;td&gt;99%&lt;/td&gt;
+      &lt;td&gt;99.5%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Request Latency - e.g. 99th percentile platform response time of HTTP requests&lt;/td&gt;
+      &lt;td&gt;&amp;lt;1s&lt;/td&gt;
+      &lt;td&gt;&amp;lt;0.5s&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Error / Loss rate e.g. log loss&lt;/td&gt;
+      &lt;td&gt;5%&lt;/td&gt;
+      &lt;td&gt;1%&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cost&lt;/td&gt;
+      &lt;td&gt;$0.05/hour&lt;/td&gt;
+      &lt;td&gt;$0.50&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;service-definitions&quot;&gt;Service Definitions&lt;/h3&gt;
+
+&lt;p&gt;Create a Service Definition for each Service Level option. This Service Definition should define at a high level how users will interact with the platform and operational team, which will differ between options.&lt;/p&gt;
+
+&lt;p&gt;Within each definition, state that you intend to use the &lt;a href=&quot;https://landing.google.com/sre/book/chapters/introduction.html&quot;&gt;Google SRE&lt;/a&gt; concept of an Error Budget. At a high level this concept acknowledges that platform stability is generally inversely proportional to the level of platform change &amp;amp; allows the platform owner the ability to continue updating the platform, perhaps causing minor outages, and hence ‘spending’ the Error Budget up until the point SLOs are not being met. At that point the only changes allowed are to make the platform more stable. A fairly short service metric timeframe should be set to avoid complete lock-up of platform fixes (e.g. 1 week).&lt;/p&gt;
+
+&lt;h2 id=&quot;service-selection&quot;&gt;Service Selection&lt;/h2&gt;
+
+&lt;p&gt;At this point the wider app team community can be presented with the Service Definitions and requested to provide feedback or vote on the various options. A ‘None of these suits me’ option should also be provided to differentiate teams uninterested in contributing, from those uninterested in the options.&lt;/p&gt;
+
+&lt;p&gt;Expect some spread here, for example: high-importance, high-change apps may be happy to pay a high price for highly available, flexible platform; whilst low-importance, low-change apps may not. Select option(s) that provide the highest business value.&lt;/p&gt;
+
+&lt;p&gt;This information-gathering process is based on the &lt;a href=&quot;http://theleanstartup.com/principles&quot;&gt;Lean Startup validated learning concept&lt;/a&gt; &amp;amp; frees up IT management from making career-altering service delivery choices, risky technology provider decisions or being forced to use &lt;em&gt;gut feel&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;platform-validation&quot;&gt;Platform Validation&lt;/h2&gt;
+
+&lt;p&gt;Having chosen a service definition &amp;amp; underlying provider, the platform delivery team can go ahead and deploy the smallest PoC copy of the platform software. The next step should be to validate that the &lt;a href=&quot;/2016/11/paas-mission-control/&quot;&gt;mission statement&lt;/a&gt; is met by the platform &lt;em&gt;within the deployed environment&lt;/em&gt; using scripted automation. Pre-existing infrastructure and/or security standards are the factors most likely to affect this result.&lt;/p&gt;
+
+&lt;p&gt;In the instance that the platform validation fails, it should be possible to push back on the platform provider for changes, or switch to a PoC of the second favourite option amongst app teams. PoCs are not a new concept, however running them to validate the service definition rather than obtain user feedback does provide specific &lt;a href=&quot;http://theleanstartup.com/principles&quot;&gt;validated learning&lt;/a&gt; about the platform.&lt;/p&gt;
+
+&lt;p&gt;With mission validated, a small set of platform consumers could use the PoC environment in order to provide validated learning around platform clients &amp;amp; tooling, if required, or the infrastructure scaled to validate distributed deployment.&lt;/p&gt;
+
+&lt;h2 id=&quot;indicator-monitoring&quot;&gt;Indicator Monitoring&lt;/h2&gt;
+
+&lt;p&gt;Once the PoC environment has passed validation, a full copy of the platform infrastructure can be deployed. SLI monitoring must be introduced &amp;amp; dashboards should be introduced that display RAG status against SLIs, to make it clear to customers when the Error Budget has been spent. This can be developed in parallel with the platform infrastructure delivery and even initial application on-boarding, provided that the first customers accept this lack of metering.&lt;/p&gt;
+
+&lt;h2 id=&quot;success&quot;&gt;Success?&lt;/h2&gt;
+
+&lt;p&gt;Since we now have SLIs, we can judge the operational success of the platform on its history of meeting the service SLOs. The underlying platform technology provider can be assessed by the same metrics in conjunction feedback from the platform delivery/support team; alternative technology providers might be considered if the provider tools caused SLOs to be missed or had a high operational overhead.&lt;/p&gt;
+
+&lt;p&gt;Platform take-up is an indicator of technology popularity, useability, or suitability to the company, rather than on technology decision-making.&lt;/p&gt;
+
+&lt;p&gt;The platform service decision, made in support of providing high perceived business value, and the technology decision, made gradually &amp;amp; with user support, should no longer adversely affect IT career progression having been made in a lean, low-risk way.&lt;/p&gt;</content><author><name></name></author><category term="cloud" /><category term="disruptive innovation" /><category term="shared platform" /><category term="paas" /><category term="caas" /><summary type="html">There are many ways to fail when delivering shared IT platforms, and in part 1 I described a typical high-risk delivery strategy often chosen by default. In this post I propose a better, low-risk way. TL;DR work with a small number of app teams with clear requirements, to define a mission statement work with technology providers to define service level / cost options follow Lean Startup techniques for service level selection &amp;amp; PoC validate mission is met &amp;amp; measure service levels keep job</summary></entry><entry><title type="html">Platform delivery - part I - high risk</title><link href="http://localhost:4000/2017/05/high-risk-platform-delivery/" rel="alternate" type="text/html" title="Platform delivery - part I - high risk" /><published>2017-05-03T06:30:21+01:00</published><updated>2017-05-03T06:30:21+01:00</updated><id>http://localhost:4000/2017/05/high-risk-platform-delivery</id><content type="html" xml:base="http://localhost:4000/2017/05/high-risk-platform-delivery/">&lt;p&gt;&lt;img src=&quot;/assets/risks-ahead.jpg&quot; alt=&quot;Risks ahead&quot; class=&quot;img-responsive&quot; /&gt;&lt;br /&gt;&lt;br /&gt;
+IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, functions-as-a-service, etc. This post describes some common mistakes…&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;tldr&quot;&gt;TL;DR&lt;/h3&gt;
+&lt;p&gt;The biggest risk is in delivering the ‘wrong thing’. The most likely way to do this is:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;make platform choice based on platform provider marketing or gut feel&lt;/li&gt;
+  &lt;li&gt;fail to define a clear service level&lt;/li&gt;
+  &lt;li&gt;define platform success based on app team take-up&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Its all too tempting for Enterprise IT management to use a high risk approach to selection and delivery of  shared IT platforms without realising there is a better way.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2017/05/low-risk-platform-delivery/&quot;&gt;Part 2 of this blog&lt;/a&gt; proposes a low-risk approach to the same challenge.&lt;/p&gt;
+
+&lt;h3 id=&quot;approach&quot;&gt;Approach&lt;/h3&gt;
+
+&lt;p&gt;The process starts with some pushing for the introduction of a new technology from technical resources within IT and application teams. Requirements are vague, however its clear the industry is moving in a certain direction &amp;amp; online material suggests the technology will definitely improve app time-to-market.&lt;/p&gt;
+
+&lt;p&gt;IT management initially resists, however supported by some &lt;em&gt;gut feel&lt;/em&gt; (e.g. do we really need this many Linux engineers?), and after a sufficient amount of pushing from The Business, IT management succumbs and decides to deliver a shared platform that meets user requirements.&lt;/p&gt;
+
+&lt;p&gt;A small team is formed to define a strategy, lets call this the platform delivery team.&lt;/p&gt;
+
+&lt;h3 id=&quot;risks&quot;&gt;Risks&lt;/h3&gt;
+
+&lt;p&gt;There will be a variety of permutations for delivering the platform, not least: technology provider; technology capabilities/options; hardware/software dependencies; redundancy / failover; load-balancing; statefulness; HA deployment pattern; clustering / distribution support; and especially cost.&lt;/p&gt;
+
+&lt;p&gt;The biggest risk is providing a platform that does not suit user requirements. This is mostly likely to happen due to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;missing functional requirements e.g. support for specific technologies on the platform&lt;/li&gt;
+  &lt;li&gt;missing non-functional requirements e.g. data retention period, request latency maximums&lt;/li&gt;
+  &lt;li&gt;platform design choices e.g. platform feature turned off, only runs on vSphere&lt;/li&gt;
+  &lt;li&gt;mis-judging service level e.g. meeting the functional/availability/performance/cost requirements of a small number of very demanding users whilst missing a lower-level service that would suit everyone else&lt;/li&gt;
+  &lt;li&gt;introducing unsuitable process e.g. placing a ticket-based on-boarding with a 5 day SLA for a platform aimed at having a low barrier-to-entry&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;provider-selection&quot;&gt;Provider Selection&lt;/h3&gt;
+
+&lt;p&gt;One easy, early route to failure is to consult on technical requirements with every potential app team customer &amp;amp; treat each requirement as gospel, in which case the team gets caught in an analysis paralysis &amp;amp; fails to deliver the platform completely.&lt;/p&gt;
+
+&lt;p&gt;To avoid this the IT management checks for market positioning of the major technology providers with 3rd party technology analysis, perhaps reading material from, or contacting, Gartner / Forrester.&lt;/p&gt;
+
+&lt;p&gt;At this point there is usually some inward debate between the top 2 technology options (e.g. Kubernetes vs. Mesos, Cloud Foundry vs. OpenShift), which is decided by the provider with the best marketing material, the highest number of Meetups, or the best representation from 3rd party analysis firms.&lt;/p&gt;
+
+&lt;p&gt;The requirements across all the Enterprise’s apps seem too various to collate &amp;amp; prioritise. So a technology provider is ‘picked’ based on strength ‘religious’ fervour &amp;amp; crucially, necks &amp;amp; careers are often placed on the block based on this best-guess decision.&lt;/p&gt;
+
+&lt;h3 id=&quot;we-did-it&quot;&gt;We did it!&lt;/h3&gt;
+
+&lt;p&gt;A full platform is designed and built. The platform delivery team agonises over the &lt;em&gt;right&lt;/em&gt; choice on a myriad of implementation details, with the aim of matching up to the marketing material on the provider website.&lt;/p&gt;
+
+&lt;p&gt;The shared platform is made available to some early customers and they on-board. They begin to use the platform to support development / test and proclaim success. Backslappings all around.&lt;/p&gt;
+
+&lt;h3 id=&quot;improvement-cycle&quot;&gt;Improvement Cycle&lt;/h3&gt;
+
+&lt;p&gt;After a short while cracks start to appear:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the platform has to be upgraded for security &amp;amp; functionality reasons&lt;/li&gt;
+  &lt;li&gt;there is no suitable time that suits &lt;em&gt;all&lt;/em&gt; the platform customers&lt;/li&gt;
+  &lt;li&gt;uptime is not 100%&lt;/li&gt;
+  &lt;li&gt;the underlying platform infrastructure maintenance results in apps on-platform getting unexpectedly affected (e.g. restarted)&lt;/li&gt;
+  &lt;li&gt;performance drops slightly as more apps are on-boarded&lt;/li&gt;
+  &lt;li&gt;the true platform service level becomes clear&lt;/li&gt;
+  &lt;li&gt;the true cost using the platform becomes clear&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the absence of an explicit service level definition, the app teams have naturally translated their prior experiences with other similar environments as assumptions over the new shared platform behaviour.
+The marketing material on the technology provider website uses phrases like ‘zero-downtime’ and ‘always-on’, supporting potentially unrealistic user expectations.&lt;/p&gt;
+
+&lt;p&gt;Without an availability target users expect 100% uptime; app owners would prefer to retain the performance levels they first experienced when the platform was virtually empty; app ops teams have to run more app instances to meet their availability targets - the perceived cost of running on the platform as gone up!&lt;/p&gt;
+
+&lt;h3 id=&quot;fix-it&quot;&gt;Fix it!&lt;/h3&gt;
+
+&lt;p&gt;Pressure builds on the platform delivery team to &lt;em&gt;do better&lt;/em&gt; in ways that are incompatible with platform maintenance. This constrains their ability to manage the platform well, since most management activities require some minimal disruption. High levels of change management are placed around the platform, which raises the cost &amp;amp; reduces the frequency of platform change. The platform design moves away from the provider roadmap or specific customisations are made in order to increase uptime/performance/value &amp;amp; the cost of platform change goes up further. The platform technology version begins to lag behind the provider roadmap &amp;amp; support costs go up.&lt;/p&gt;
+
+&lt;h3 id=&quot;success&quot;&gt;Success?&lt;/h3&gt;
+
+&lt;p&gt;Remember the neck-on-the-block IT strategy decision earlier? Well soon enough a natural time comes to assess the success of the shared platform. Without any explicit service metrics, the platform is judged on the take-up by app teams &amp;amp; a &lt;em&gt;gut feel&lt;/em&gt; for the business benefit realised versus the amount of headache that has been caused.&lt;/p&gt;
+
+&lt;p&gt;At this point take-up may have begun to drop because the platform &amp;amp; delivery team are seen as difficult to get on with &amp;amp; not living up to expectations. Other technology providers are suggested as better alternatives. Earlier technology decisions are revisited with the benefit of hindsight. Expertise is called into question.&lt;/p&gt;
+
+&lt;p&gt;Most importantly the suitability of the decision to use the specific technology cannot be analysed separately from the success in meeting the platform requirements because there was no specific platform service detail captured up front.&lt;/p&gt;
+
+&lt;p&gt;There must be a better way!&lt;/p&gt;
+
+&lt;p&gt;In &lt;a href=&quot;/2017/05/low-risk-platform-delivery/&quot;&gt;part 2 of this blog&lt;/a&gt; I propose a lower-risk approach shared platform provision, based on lean methodologies.&lt;/p&gt;</content><author><name></name></author><category term="cloud" /><category term="shared platform" /><category term="paas" /><category term="caas" /><category term="high risk" /><summary type="html">IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, functions-as-a-service, etc. This post describes some common mistakes… TL;DR The biggest risk is in delivering the ‘wrong thing’. The most likely way to do this is: make platform choice based on platform provider marketing or gut feel fail to define a clear service level define platform success based on app team take-up</summary></entry><entry><title type="html">PaaS Mission Control</title><link href="http://localhost:4000/2016/11/paas-mission-control/" rel="alternate" type="text/html" title="PaaS Mission Control" /><published>2016-11-22T09:02:24+00:00</published><updated>2016-11-22T09:02:24+00:00</updated><id>http://localhost:4000/2016/11/paas-mission-control</id><content type="html" xml:base="http://localhost:4000/2016/11/paas-mission-control/">&lt;p&gt;&lt;img src=&quot;/assets/mission-control.png&quot; alt=&quot;PaaS Mission Control&quot; class=&quot;img-responsive&quot; /&gt;&lt;br /&gt;&lt;br /&gt;
+When delivering a PaaS platform it is important not to lose focus on the business value.&lt;/p&gt;
+&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Create and publish a mission statement for your PaaS initiative&lt;/li&gt;
+  &lt;li&gt;Measure your success &amp;amp; iterate on it to improve&lt;/li&gt;
+  &lt;li&gt;Make PaaS a quantifiable Value Stream&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;why-do-we-have-a-paas&quot;&gt;Why do we have a PaaS?&lt;/h2&gt;
+&lt;p&gt;Platform-as-a-Service (PaaS) is an enabling technology, rather than an end goal in itself. Deploying your own PaaS can be a complex task that, like most Cloud technologies, changes the challenge from infrastructure to service management.&lt;/p&gt;
+
+&lt;p&gt;In amongst the on-boarding, upgrading, automating, managing &amp;amp; monitoring you may find yourself asking “Are things actually better for app teams now?” and not being able to answer with certainty.&lt;/p&gt;
+
+&lt;h2 id=&quot;define-the-mission&quot;&gt;Define The Mission&lt;/h2&gt;
+
+&lt;p&gt;I strongly advocate working with your PaaS funding provider to create and document a mission statement that defines the business value of your PaaS initiative, one that your major stakeholders sign up to, before you start on-boarding business apps. It must be measurable so that the level of success can be measured.&lt;/p&gt;
+
+&lt;p&gt;Example mission statement candidates include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;provide a low-barrier-to-entry area into which developers can write apps using new technologies&lt;/li&gt;
+  &lt;li&gt;remove provision of strategic infrastructure technology from the business app delivery cycle in order to speed up time-to-market&lt;/li&gt;
+  &lt;li&gt;enable business apps to be conceived and delivered to production within the same day&lt;/li&gt;
+  &lt;li&gt;enable new developer staff to start developing business apps on their first day&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The make-up of your PaaS will differ depending upon this statement, for example: if you simply want to provide a developer playground for trying new technology, your PaaS must have them all installed; or to achieve fast time-to-market, then you might choose to only deploy those technologies that are already approved for production.&lt;/p&gt;
+
+&lt;p&gt;Obtain backing for your mission from as high up the managerial ladder as possible. With PaaS software in place you may next need to influence a number of teams adjacent to PaaS, which were previously providing infrastructure or services manually e.g. CI / CD services, developer tooling, security, LDAP, accounting/finance. For these teams some change, automation &amp;amp; self-servicing will be necessary, so use your management contacts to make this happen. You should be able to clearly state where these teams are blocking the mission.&lt;/p&gt;
+
+&lt;h2 id=&quot;test-the-mission&quot;&gt;Test The Mission&lt;/h2&gt;
+
+&lt;p&gt;Test how well you are achieving the mission and iterate on improvement to ensure it is being more and more consistently achieved. For example, if your mission is to be able to conceive a business app and deliver to production on the same day, you could initially write a test that creates a PaaS deployment area (e.g. an Organization on Cloud Foundry), and pushes code to it. Then begin adding the initial pre-requisites into your mission test scripts as surrounding automation is made available: creating a new LDAP group for a made-up team, creating a new source control repository with team access, adding code to it, creating a CI account with code access, creating CI/CD jobs, creating test accounts, creating a team distribution list, creating a new cost centre with finance, etc.&lt;/p&gt;
+
+&lt;p&gt;At some point all the mission pre-requisites will be included and the mission met, at which point the continued running of the scripts ensure the stated benefit of the PaaS is realized throughout its life; and ensures that future changes in surrounding infrastructure or service do not interrupt the PaaS mission.&lt;/p&gt;
+
+&lt;h2 id=&quot;measuring-value&quot;&gt;Measuring Value&lt;/h2&gt;
+
+&lt;p&gt;At Enterprises, without proof that you’re providing a higher purpose than being a simple alternative to VMs, your PaaS platform will be continually compared to traditional infrastructure on unit price alone. Use the measurement of mission to quantify the benefit in monetary terms. For example, for a mission that defines saving time in waiting for traditional infrastructure delivery, if it takes 3 weeks longer elapsed time to deliver on VMs and an 6-man team costs Y per week, each new product is 3 x Y cheaper on PaaS.&lt;/p&gt;
+
+&lt;p&gt;Using this method, you can make PaaS a Value Stream for your mission, with a quantifiable value.&lt;/p&gt;
+
+&lt;h2 id=&quot;mission-complete&quot;&gt;Mission Complete&lt;/h2&gt;
+
+&lt;p&gt;Alternatives to PaaS will arise over time, eventually as replacements to PaaS. These too can be assessed on their ability to meet the PaaS mission, or PaaS can be removed altogether if the mission itself is no longer relevant.&lt;/p&gt;</content><author><name></name></author><category term="cloud" /><category term="paas" /><category term="cloud foundry" /><category term="continuous delivery" /><category term="mission" /><category term="mission control" /><summary type="html">When delivering a PaaS platform it is important not to lose focus on the business value. TL;DR Create and publish a mission statement for your PaaS initiative Measure your success &amp;amp; iterate on it to improve Make PaaS a quantifiable Value Stream</summary></entry><entry><title type="html">PaaS Continuous Delivery</title><link href="http://localhost:4000/2016/11/paas-continuous-delivery/" rel="alternate" type="text/html" title="PaaS Continuous Delivery" /><published>2016-11-11T09:02:24+00:00</published><updated>2016-11-11T09:02:24+00:00</updated><id>http://localhost:4000/2016/11/paas-continuous-delivery</id><content type="html" xml:base="http://localhost:4000/2016/11/paas-continuous-delivery/">&lt;h3&gt;&lt;a href=&quot;/2016/11/paas-continuous-delivery/&quot;&gt;&lt;img class=&quot;alignnone size-medium wp-image-46&quot; src=&quot;/assets/CD-300x241.png&quot; alt=&quot;CD&quot; width=&quot;300&quot; height=&quot;241&quot; /&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;h3&gt;TL;DR&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Continuously deliver your PaaS using DevOps app delivery techniques&lt;/li&gt;

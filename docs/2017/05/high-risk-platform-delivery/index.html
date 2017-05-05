@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Platform delivery - part I - high risk – DHR @ cloud – DevOps / PaaS Consultant in London, UK</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="
+IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, functions-as-a-service, etc. This post describes some common mistakes…
+TL;DR
+The biggest risk is in delivering the ‘wrong thing’. The most likely way to do this is:
+
+  make platform choice based on platform provider marketing or gut feel
+  fail to define a clear service level
+  define platform success based on app team take-up
+
+
+" />
+    <meta property="og:description" content="
+IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, functions-as-a-service, etc. This post describes some common mistakes…
+TL;DR
+The biggest risk is in delivering the ‘wrong thing’. The most likely way to do this is:
+
+  make platform choice based on platform provider marketing or gut feel
+  fail to define a clear service level
+  define platform success based on app team take-up
+
+
+" />
+    
+    <meta name="author" content="DHR @ cloud" />
+
+    
+    <meta property="og:title" content="Platform delivery - part I - high risk" />
+    <meta property="twitter:title" content="Platform delivery - part I - high risk" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="DHR @ cloud - DevOps / PaaS Consultant in London, UK" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Platform delivery - part I - high risk - DHR @ cloud</title>
+<meta property="og:title" content="Platform delivery - part I - high risk" />
+<meta name="description" content="IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, functions-as-a-service, etc. This post describes some common mistakes… TL;DR The biggest risk is in delivering the ‘wrong thing’. The most likely way to do this is: make platform choice based on platform provider marketing or gut feel fail to define a clear service level define platform success based on app team take-up" />
+<meta property="og:description" content="IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, functions-as-a-service, etc. This post describes some common mistakes… TL;DR The biggest risk is in delivering the ‘wrong thing’. The most likely way to do this is: make platform choice based on platform provider marketing or gut feel fail to define a clear service level define platform success based on app team take-up" />
+<link rel="canonical" href="http://localhost:4000/2017/05/high-risk-platform-delivery/" />
+<meta property="og:url" content="http://localhost:4000/2017/05/high-risk-platform-delivery/" />
+<meta property="og:site_name" content="DHR @ cloud" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-05-03T06:30:21+01:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Platform delivery - part I - high risk",
+"datePublished": "2017-05-03T06:30:21+01:00",
+"description": "IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, functions-as-a-service, etc. This post describes some common mistakes… TL;DR The biggest risk is in delivering the ‘wrong thing’. The most likely way to do this is: make platform choice based on platform provider marketing or gut feel fail to define a clear service level define platform success based on app team take-up",
+"url": "http://localhost:4000/2017/05/high-risk-platform-delivery/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="https://raw.githubusercontent.com/dhrapson/jekyll-now/master/images/dhr.jpg" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">DHR @ cloud</a></h1>
+            <p class="site-description">DevOps / PaaS Consultant in London, UK</p>
+          </div>
+
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Platform delivery - part I - high risk</h1>
+
+  <div class="entry">
+    <p><img src="/assets/risks-ahead.jpg" alt="Risks ahead" class="img-responsive" /><br /><br />
+IT departments often choose to deliver their own shared platform for app teams, rather than opting for cloud-based alternatives. This might be for shared logging, monitoring, platform-as-a-service, container-as-a-service, functions-as-a-service, etc. This post describes some common mistakes…<br /></p>
+<h3 id="tldr">TL;DR</h3>
+<p>The biggest risk is in delivering the ‘wrong thing’. The most likely way to do this is:</p>
+<ul>
+  <li>make platform choice based on platform provider marketing or gut feel</li>
+  <li>fail to define a clear service level</li>
+  <li>define platform success based on app team take-up</li>
+</ul>
+
+<p>Its all too tempting for Enterprise IT management to use a high risk approach to selection and delivery of  shared IT platforms without realising there is a better way.</p>
+
+<p><a href="/2017/05/low-risk-platform-delivery/">Part 2 of this blog</a> proposes a low-risk approach to the same challenge.</p>
+
+<h3 id="approach">Approach</h3>
+
+<p>The process starts with some pushing for the introduction of a new technology from technical resources within IT and application teams. Requirements are vague, however its clear the industry is moving in a certain direction &amp; online material suggests the technology will definitely improve app time-to-market.</p>
+
+<p>IT management initially resists, however supported by some <em>gut feel</em> (e.g. do we really need this many Linux engineers?), and after a sufficient amount of pushing from The Business, IT management succumbs and decides to deliver a shared platform that meets user requirements.</p>
+
+<p>A small team is formed to define a strategy, lets call this the platform delivery team.</p>
+
+<h3 id="risks">Risks</h3>
+
+<p>There will be a variety of permutations for delivering the platform, not least: technology provider; technology capabilities/options; hardware/software dependencies; redundancy / failover; load-balancing; statefulness; HA deployment pattern; clustering / distribution support; and especially cost.</p>
+
+<p>The biggest risk is providing a platform that does not suit user requirements. This is mostly likely to happen due to:</p>
+
+<ul>
+  <li>missing functional requirements e.g. support for specific technologies on the platform</li>
+  <li>missing non-functional requirements e.g. data retention period, request latency maximums</li>
+  <li>platform design choices e.g. platform feature turned off, only runs on vSphere</li>
+  <li>mis-judging service level e.g. meeting the functional/availability/performance/cost requirements of a small number of very demanding users whilst missing a lower-level service that would suit everyone else</li>
+  <li>introducing unsuitable process e.g. placing a ticket-based on-boarding with a 5 day SLA for a platform aimed at having a low barrier-to-entry</li>
+</ul>
+
+<h3 id="provider-selection">Provider Selection</h3>
+
+<p>One easy, early route to failure is to consult on technical requirements with every potential app team customer &amp; treat each requirement as gospel, in which case the team gets caught in an analysis paralysis &amp; fails to deliver the platform completely.</p>
+
+<p>To avoid this the IT management checks for market positioning of the major technology providers with 3rd party technology analysis, perhaps reading material from, or contacting, Gartner / Forrester.</p>
+
+<p>At this point there is usually some inward debate between the top 2 technology options (e.g. Kubernetes vs. Mesos, Cloud Foundry vs. OpenShift), which is decided by the provider with the best marketing material, the highest number of Meetups, or the best representation from 3rd party analysis firms.</p>
+
+<p>The requirements across all the Enterprise’s apps seem too various to collate &amp; prioritise. So a technology provider is ‘picked’ based on strength ‘religious’ fervour &amp; crucially, necks &amp; careers are often placed on the block based on this best-guess decision.</p>
+
+<h3 id="we-did-it">We did it!</h3>
+
+<p>A full platform is designed and built. The platform delivery team agonises over the <em>right</em> choice on a myriad of implementation details, with the aim of matching up to the marketing material on the provider website.</p>
+
+<p>The shared platform is made available to some early customers and they on-board. They begin to use the platform to support development / test and proclaim success. Backslappings all around.</p>
+
+<h3 id="improvement-cycle">Improvement Cycle</h3>
+
+<p>After a short while cracks start to appear:</p>
+<ul>
+  <li>the platform has to be upgraded for security &amp; functionality reasons</li>
+  <li>there is no suitable time that suits <em>all</em> the platform customers</li>
+  <li>uptime is not 100%</li>
+  <li>the underlying platform infrastructure maintenance results in apps on-platform getting unexpectedly affected (e.g. restarted)</li>
+  <li>performance drops slightly as more apps are on-boarded</li>
+  <li>the true platform service level becomes clear</li>
+  <li>the true cost using the platform becomes clear</li>
+</ul>
+
+<p>In the absence of an explicit service level definition, the app teams have naturally translated their prior experiences with other similar environments as assumptions over the new shared platform behaviour.
+The marketing material on the technology provider website uses phrases like ‘zero-downtime’ and ‘always-on’, supporting potentially unrealistic user expectations.</p>
+
+<p>Without an availability target users expect 100% uptime; app owners would prefer to retain the performance levels they first experienced when the platform was virtually empty; app ops teams have to run more app instances to meet their availability targets - the perceived cost of running on the platform as gone up!</p>
+
+<h3 id="fix-it">Fix it!</h3>
+
+<p>Pressure builds on the platform delivery team to <em>do better</em> in ways that are incompatible with platform maintenance. This constrains their ability to manage the platform well, since most management activities require some minimal disruption. High levels of change management are placed around the platform, which raises the cost &amp; reduces the frequency of platform change. The platform design moves away from the provider roadmap or specific customisations are made in order to increase uptime/performance/value &amp; the cost of platform change goes up further. The platform technology version begins to lag behind the provider roadmap &amp; support costs go up.</p>
+
+<h3 id="success">Success?</h3>
+
+<p>Remember the neck-on-the-block IT strategy decision earlier? Well soon enough a natural time comes to assess the success of the shared platform. Without any explicit service metrics, the platform is judged on the take-up by app teams &amp; a <em>gut feel</em> for the business benefit realised versus the amount of headache that has been caused.</p>
+
+<p>At this point take-up may have begun to drop because the platform &amp; delivery team are seen as difficult to get on with &amp; not living up to expectations. Other technology providers are suggested as better alternatives. Earlier technology decisions are revisited with the benefit of hindsight. Expertise is called into question.</p>
+
+<p>Most importantly the suitability of the decision to use the specific technology cannot be analysed separately from the success in meeting the platform requirements because there was no specific platform service detail captured up front.</p>
+
+<p>There must be a better way!</p>
+
+<p>In <a href="/2017/05/low-risk-platform-delivery/">part 2 of this blog</a> I propose a lower-risk approach shared platform provision, based on lean methodologies.</p>
+
+  </div>
+
+  <div class="date">
+    Written on May  3, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/dhrapson"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/dhrapson"><i class="svg-icon linkedin"></i></a>
+
+
+<a href="https://www.twitter.com/dhrapson"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
